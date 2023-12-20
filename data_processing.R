@@ -39,27 +39,6 @@ percentage_overeenkomst_man <- (overeenkomst_count / 30) * 100
 overeenkomst_count <- sum(ois_data_vrouw$`Was jij aan het chatten met een mens of een Kunstmatige Intelligentie?` == ois_data_vrouw$`Daadwerkelijk mens/KI`)
 percentage_overeenkomst_vrouw <- (overeenkomst_count / 30) * 100
 
-# Wilcox / Mann-Whitney U
-shapiro.test(ois_data$`Beantwoord de volgende vragen - Ik weet zeker of mijn gesprekpartner een mens is of niet`)
-wilcox.test(`Beantwoord de volgende vragen - Ik weet zeker of mijn gesprekpartner een mens is of niet` ~ `Daadwerkelijk mens/KI`, data = ois_data)
-
-shapiro.test(ois_data$`Beantwoord de volgende vragen - De reactietijd was snel`)
-wilcox.test(`Beantwoord de volgende vragen - De reactietijd was snel` ~ `Daadwerkelijk mens/KI`, data = ois_data)
-
-# Bereken de contingency coefficient
-assocstats(table(ois_data$`Wat is je geslacht`, ois_data$correct_guess))$cramer
-assocstats(table(ois_data$`Beantwoord de volgende vragen - Ik weet zeker of mijn gesprekpartner een mens is of niet`, ois_data$correct_guess))$cramer
-assocstats(table(ois_data$`Beantwoord de volgende vragen - De reactietijd was snel`, ois_data$correct_guess))$cramer
-
-  #matig tot sterke associatie
-assocstats(table(ois_data_KI$`Beantwoord de volgende vragen - Ik weet zeker of mijn gesprekpartner een mens is of niet`, ois_data_KI$correct_guess))$cramer
-
-
-
-
-
-
-
 
 
 
