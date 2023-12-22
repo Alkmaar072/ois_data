@@ -12,6 +12,7 @@ ois_data_mens <- ois_data[ois_data$`Daadwerkelijk mens/KI` == 1, ]
 ois_data_KI <- ois_data[ois_data$`Daadwerkelijk mens/KI` == 2, ]
 ois_data_man <- ois_data[ois_data$`Wat is je geslacht` == 1, ]
 ois_data_vrouw <- ois_data[ois_data$`Wat is je geslacht` == 2, ]
+ois_data_KI_ervaring <- ois_data[ois_data$`Maak je zelf gebruik van generative AI?` == 2, ]
 
 summary(ois_data)
 #leeftijd
@@ -27,9 +28,12 @@ count_faculteit <- ois_data %>%
   group_by(ois_data$`Welke richting studeer je?`) %>%
   summarise(Count = n())
 
+# 1 = ja, 2 = nee, 3 = soms
 count_gebruik_KI <- ois_data %>%
   group_by(ois_data$`Maak je zelf gebruik van generative AI?`) %>%
   summarise(Count = n())
+
+
 
 # Hoeveel hadden het goed ~ totale set
 overeenkomst_count <- sum(ois_data$`Was jij aan het chatten met een mens of een Kunstmatige Intelligentie?` == ois_data$`Daadwerkelijk mens/KI`)
