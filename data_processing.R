@@ -22,6 +22,11 @@ ggplot(ois_data, aes(x = as.factor(`Hoe oud ben je?`))) +
        y = "Count")
 boxplot(ois_data$`Hoe oud ben je?`)
 
+# 1 = natuur, 2 = wis, 3 = infor
+count_faculteit <- ois_data %>%
+  group_by(ois_data$`Welke richting studeer je?`) %>%
+  summarise(Count = n())
+
 count_gebruik_KI <- ois_data %>%
   group_by(ois_data$`Maak je zelf gebruik van generative AI?`) %>%
   summarise(Count = n())
