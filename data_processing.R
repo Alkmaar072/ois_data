@@ -12,7 +12,9 @@ ois_data_mens <- ois_data[ois_data$`Daadwerkelijk mens/KI` == 1, ]
 ois_data_KI <- ois_data[ois_data$`Daadwerkelijk mens/KI` == 2, ]
 ois_data_man <- ois_data[ois_data$`Wat is je geslacht` == 1, ]
 ois_data_vrouw <- ois_data[ois_data$`Wat is je geslacht` == 2, ]
-ois_data_KI_ervaring <- ois_data[ois_data$`Maak je zelf gebruik van generative AI?` == 2, ]
+ois_data_KI_ervaring <- ois_data[ois_data$`Maak je zelf gebruik van generative AI?` == 1, ]
+ois_data_KI_geen_ervaring <- ois_data[ois_data$`Maak je zelf gebruik van generative AI?` == 2, ]
+ois_data_KI_soms_ervaring <- ois_data[ois_data$`Maak je zelf gebruik van generative AI?` == 3, ]
 
 summary(ois_data)
 #leeftijd
@@ -34,7 +36,6 @@ count_gebruik_KI <- ois_data %>%
   summarise(Count = n())
 
 
-
 # Hoeveel hadden het goed ~ totale set
 overeenkomst_count <- sum(ois_data$`Was jij aan het chatten met een mens of een Kunstmatige Intelligentie?` == ois_data$`Daadwerkelijk mens/KI`)
 percentage_overeenkomst_all <- (overeenkomst_count / 60) * 100
@@ -54,6 +55,17 @@ percentage_overeenkomst_man <- (overeenkomst_count / 30) * 100
 # Hoeveel hadden het goed ~ vrouw
 overeenkomst_count <- sum(ois_data_vrouw$`Was jij aan het chatten met een mens of een Kunstmatige Intelligentie?` == ois_data_vrouw$`Daadwerkelijk mens/KI`)
 percentage_overeenkomst_vrouw <- (overeenkomst_count / 30) * 100
+
+# Hoeveel hadden het goed ~ ervaring
+overeenkomst_count <- sum(ois_data_KI_ervaring$`Was jij aan het chatten met een mens of een Kunstmatige Intelligentie?` == ois_data_KI_ervaring$`Daadwerkelijk mens/KI`)
+percentage_overeenkomst_ervaring <- (overeenkomst_count / 40) * 100
+# Hoeveel hadden het goed ~ geen ervaring
+overeenkomst_count <- sum(ois_data_KI_geen_ervaring$`Was jij aan het chatten met een mens of een Kunstmatige Intelligentie?` == ois_data_KI_geen_ervaring$`Daadwerkelijk mens/KI`)
+percentage_overeenkomst_geen_ervaring <- (overeenkomst_count / 6) * 100
+# Hoeveel hadden het goed ~ soms ervaring
+overeenkomst_count <- sum(ois_data_KI_soms_ervaring$`Was jij aan het chatten met een mens of een Kunstmatige Intelligentie?` == ois_data_KI_soms_ervaring$`Daadwerkelijk mens/KI`)
+percentage_overeenkomst_soms_ervaring <- (overeenkomst_count / 14) * 100
+
 
 # Wilcox / Mann-Whitney U
 shapiro.test(ois_data$`Beantwoord de volgende vragen - Ik weet zeker of mijn gesprekpartner een mens is of niet`)
